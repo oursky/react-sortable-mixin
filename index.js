@@ -10,6 +10,7 @@ var listMixin = {
       unbindMove: this.unbindMove,
       resort: this.resort
     };
+    this.setMovable(true);
   },
   // movedComponent: component to move
   // moveElemEvent: mouse event object triggered on moveElem
@@ -96,7 +97,7 @@ var listMixin = {
 
     // To make handler removable, DO NOT `.bind(this)` here, because
     // > A new function reference is created after .bind() is called!
-    if (movedComponent.movable) {
+    if (movedComponent.movable && this.movable) {
       this.getDOMNode().addEventListener('mousemove', this.moveHandler);
     }
     // Bind to `document` to be more robust
@@ -123,7 +124,10 @@ var listMixin = {
         this.onResorted(items);
       }
     }
-  }
+  },
+  setMovable: function(movable) {
+    this.movable = movable
+  },
 };
 
 var itemMixin = {
