@@ -146,8 +146,10 @@ var itemMixin = {
   },
   createPlaceHolder: function(el) {
     el = el || this.getDOMNode();
-    this.placeholder = el.cloneNode(true);
-    this.placeholder.style.opacity = '0';
+    this.placeholder = el.cloneNode(false);
+    this.placeholder.removeAttribute('data-reactid');
+    this.placeholder.className += ' placeholder';
+    this.placeholder.style.height = el.offsetHeight + 'px';
   },
   moveSetup: function(e) {
     var el = this.getDOMNode();
