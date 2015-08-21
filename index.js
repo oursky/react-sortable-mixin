@@ -121,7 +121,7 @@ var listMixin = {
       items.splice(newPosition, 0, movedItem);
       this.setState({'items': items});
       if (this.onResorted) {
-        this.onResorted(items);
+        this.onResorted(items, newPosition);
       }
     }
   },
